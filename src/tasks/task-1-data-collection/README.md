@@ -2,4 +2,4 @@
 
 # Data Collection :
 
-- The tasklead can edit this file as per requirement..
+- The tasklead can edit this file as per requirement.
