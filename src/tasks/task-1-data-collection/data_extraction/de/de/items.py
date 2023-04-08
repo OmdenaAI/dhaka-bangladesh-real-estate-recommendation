@@ -44,3 +44,17 @@ class ashSpiderItem(Item):
     garage = Field()
     url = Field()
     amenities = Field()
+    
+    
+    class RentalHomeBD(Item):
+    # define the fields for your item here like:
+    basic_info = Field()
+    amenities = Field()
+    address = Field()
+    type = Field()
+    title = Field()
+    price_in_BDT = Field()
+    details = Field()
+    purpose = Field()
+    page_url = Field()
+    listing_url = Field()
