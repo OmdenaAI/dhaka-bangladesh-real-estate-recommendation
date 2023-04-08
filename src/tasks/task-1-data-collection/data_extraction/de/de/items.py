@@ -19,7 +19,7 @@ class PBazarItem(Item):
     price_per_sft = Field()
     price = Field()
     location = Field()
-    area = Field()
+    area_sft = Field()
     attach_bathrooms = Field()
     common_bathrooms = Field()
     bedrooms = Field()
