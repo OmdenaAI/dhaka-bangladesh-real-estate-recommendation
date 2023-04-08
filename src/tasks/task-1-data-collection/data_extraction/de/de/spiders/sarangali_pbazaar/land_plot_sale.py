@@ -5,7 +5,7 @@ from twisted.internet.error import DNSLookupError
 from twisted.internet.error import TimeoutError, TCPTimedOutError
 
 class DataExtractionSpider(scrapy.Spider):
-    name = "dhaka_land_plot_sale"
+    name = "land_plot_sale"
     start_urls = ["https://pbazaar.com/en/land-plot-for-sale"]
     website_main_url = 'https://pbazaar.com/'
 

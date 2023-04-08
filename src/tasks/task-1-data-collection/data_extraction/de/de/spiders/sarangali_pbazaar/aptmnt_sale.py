@@ -5,8 +5,8 @@ from twisted.internet.error import DNSLookupError
 from twisted.internet.error import TimeoutError, TCPTimedOutError
 
 class DataExtractionSpider(scrapy.Spider):
-    name = "dhaka_commercial_sale"
-    start_urls = ["https://pbazaar.com/en/commercial-space-for-sale"]
+    name = "aptmnt_sale"
+    start_urls = ["https://pbazaar.com/en/apartment-for-sale"]
     website_main_url = 'https://pbazaar.com/'
 
     #
@@ -33,13 +33,14 @@ class DataExtractionSpider(scrapy.Spider):
     def parse_details_page(self, response):
 
         item = PBazarItem()
-        item['property_type'] = response.css('ol.breadcrumb li:nth-child(2) span[itemprop="title"]::text').get()
         item['price_per_sft'] = response.css("div.col-md-3 p.propertyHeader_heading strong::text").get()
         item['location'] = response.css("div.col-md-7 p.propertyHeader_details::text").get()
         item['floor'] = response.css('div.property-amenities:nth-child(1) strong::text').get()
-        item['total_floor'] = response.css('div.property-amenities:nth-child(2) strong::text').get()
-        item['area'] = response.css('div.property-amenities:nth-of-type(3) strong::text').get()
-        item['parking'] = response.css('div.property-amenities:nth-child(4) strong::text').get()
+        item['area'] = response.css('div.property-amenities:nth-child(2) strong::text').get()
+        item['attach_bathrooms'] = response.css('div.property-amenities:nth-child(3) strong::text').get()
+        item['bedrooms'] = response.css('div.property-amenities:nth-child(4) strong::text').get()
+        item['common_bathrooms'] = response.css('div.property-amenities:nth-child(5) strong::text').get()
+        item['floor_type'] = response.css('div.property-amenities:nth-child(9) strong::text').get()
 
         yield item
 
