@@ -1,5 +1,5 @@
 import scrapy
-from ..items import PBazarItem
+from ...items import PBazarItem
 from scrapy.spidermiddlewares.httperror import HttpError
 from twisted.internet.error import DNSLookupError
 from twisted.internet.error import TimeoutError, TCPTimedOutError
