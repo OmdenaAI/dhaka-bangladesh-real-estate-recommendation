@@ -31,3 +31,16 @@ class PBazarItem(Item):
     size_in_katha = Field()
     view = Field()
     road_width = Field()
+
+class ashSpiderItem(Item):
+    # define the fields for your item here like:
+    location = Field()
+    price = Field()
+    bedrooms = Field()
+    bathrooms = Field()
+    area = Field()
+    ptype = Field()
+    pstatus = Field()
+    garage = Field()
+    url = Field()
+    amenities = Field()
