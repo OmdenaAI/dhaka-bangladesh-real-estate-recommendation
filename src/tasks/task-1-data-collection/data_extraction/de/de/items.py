@@ -12,3 +12,21 @@ class BpPropertyItem(Item):
     purpose = Field()
     amenities = Field()
 
+class PBazarItem(Item):
+
+    property_type = Field()
+    price_per_month = Field()
+    price_per_sft = Field()
+    price = Field()
+    location = Field()
+    area = Field()
+    attach_bathrooms = Field()
+    common_bathrooms = Field()
+    bedrooms = Field()
+    floor = Field()
+    floor_type = Field()
+    parking = Field()
+    total_floor = Field()
+    size_in_katha = Field()
+    view = Field()
+    road_width = Field()
