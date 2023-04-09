@@ -64,7 +64,7 @@ class ashSpiderItem(Item):
     page_url = Field()
     listing_url = Field()
 
-class iqibdPropsItem(scrapy.Item):
+class iqibdPropsItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     property_link = scrapy.Field()
