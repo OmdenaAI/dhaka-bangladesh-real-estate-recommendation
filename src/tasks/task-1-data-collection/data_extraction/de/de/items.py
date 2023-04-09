@@ -26,11 +26,15 @@ class PBazarItem(Item):
     bedrooms = Field()
     floor = Field()
     floor_type = Field()
-    parking = Field()
+    parking_space = Field()
+    balcony = Field()
+    dining = Field()
+    living = Field()
     total_floor = Field()
     size_in_katha = Field()
     view = Field()
     road_width = Field()
+    land_katha = Field()
 
 class ashSpiderItem(Item):
     # define the fields for your item here like:
