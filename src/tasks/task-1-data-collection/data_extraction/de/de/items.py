@@ -12,6 +12,9 @@ class BpPropertyItem(Item):
     purpose = Field()
     amenities = Field()
     property_url= Field()
+    property_description = Field()
+    property_overview = Field()
+    commercial_type = Field()
 
 class PBazarItem(Item):
 
