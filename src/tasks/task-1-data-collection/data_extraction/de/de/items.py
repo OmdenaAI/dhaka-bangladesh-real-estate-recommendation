@@ -35,6 +35,7 @@ class PBazarItem(Item):
     view = Field()
     road_width = Field()
     land_katha = Field()
+    garage_number = Field()
 
 class ashSpiderItem(Item):
     # define the fields for your item here like:
