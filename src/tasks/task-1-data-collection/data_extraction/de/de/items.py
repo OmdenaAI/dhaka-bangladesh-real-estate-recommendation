@@ -51,7 +51,7 @@ class ashSpiderItem(Item):
     amenities = Field()
     
     
-    class RentalHomeBD(Item):
+class RentalHomeBD(Item):
     # define the fields for your item here like:
     basic_info = Field()
     amenities = Field()
@@ -100,3 +100,24 @@ class iqibdPropsItem(Item):
     central_heating = Field()
     pets_allow = Field()
     servant_room = Field()
+
+
+class ToleterItem(Item):
+     
+
+    # define the fields for your item here like:
+
+     
+    PropertyType = Field()
+    Amenities = Field()
+    MainFeatures = Field()
+    Bedroom=Field()
+    Bathroom=Field()
+    Status=Field()
+    #  PropertySize = Field()
+    #  Floors = Field()
+    Location = Field()
+    PricePerMonth =Field()
+    Description = Field()
+    NearByLocation= Field()
+    url=Field()
