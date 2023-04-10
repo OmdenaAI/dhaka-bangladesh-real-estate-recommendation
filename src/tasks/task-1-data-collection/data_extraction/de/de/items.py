@@ -166,3 +166,15 @@ class SharifItem(Item):
     amenities = Field()
     property_type = Field()
 
+class TheToLetItem(Item):
+    title = Field()
+    basic_info = Field()
+    address = Field()
+    price_per_month = Field()
+    type = Field()
+    purpose = Field()
+    amenities = Field()
+    description = Field()
+    price_negotiable = Field()
+    property_url = Field()
+
