@@ -21,7 +21,6 @@ class PBazarItem(Item):
     property_type = Field()
     price_per_month = Field()
     price_per_sft = Field()
-    price = Field()
     location = Field()
     area_sft = Field()
     attach_bathrooms = Field()
@@ -36,9 +35,10 @@ class PBazarItem(Item):
     total_floor = Field()
     size_in_katha = Field()
     view = Field()
-    road_width = Field()
-    land_katha = Field()
+    road_width_ft = Field()
     garage_number = Field()
+    property_url = Field()
+    price = Field()
 
 class ashSpiderItem(Item):
     # define the fields for your item here like:
