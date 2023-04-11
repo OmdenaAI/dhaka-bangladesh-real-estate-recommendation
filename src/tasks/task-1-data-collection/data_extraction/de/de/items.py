@@ -55,17 +55,17 @@ class ashSpiderItem(Item):
     
     
 class RentalHomeBD(Item):
-    # define the fields for your item here like:
-    basic_info = Field()
+    num_bed =Field()
+    num_bath=Field()
+    area = Field()
     amenities = Field()
     address = Field()
-    type = Field()
+    building_type = Field()
     title = Field()
     price_in_BDT = Field()
     details = Field()
     purpose = Field()
-    page_url = Field()
-    listing_url = Field()
+    listing_url = Field() 
 
 class iqibdPropsItem(Item):
     # define the fields for your item here like:
