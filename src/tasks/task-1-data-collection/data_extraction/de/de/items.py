@@ -178,3 +178,15 @@ class TheToLetItem(Item):
     price_negotiable = Field()
     property_url = Field()
 
+ 
+class HomeFairBD(Item):
+    title = Field()
+    building_type = Field()
+    area = Field()
+    num_bed = Field()
+    num_bath = Field()
+    location = Field()
+    price = Field()
+    amenities = Field()
+    purpose = Field()
+    listing_url = Field()
