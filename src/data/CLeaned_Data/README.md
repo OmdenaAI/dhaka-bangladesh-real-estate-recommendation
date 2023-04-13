@@ -1,7 +1,7 @@
 All the cleaned CSV should be stored here.
 
 The mandatory fields for Residential data are
-  1. Aread
+  1. Area
   2. Building_Type
   3. Commercial_Type
   4. Location
