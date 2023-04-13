@@ -178,6 +178,37 @@ class TheToLetItem(Item):
     price_negotiable = Field()
     property_url = Field()
 
+class PropertysalebdItem(Item):
+    title = Field()
+    property_name = Field()
+    property_type = Field()
+    property_for = Field()
+    location = Field()
+    address = Field()
+    construction_status = Field()
+    property_size = Field()
+    price_per_sqft_or_katha_or_dcml = Field()
+    monthly_rent = Field()
+    total_price = Field()
+    deposit = Field()
+    transaction_type = Field()
+    bedroom = Field()
+    balconies = Field()
+    bathroom = Field()
+    floor_number = Field()
+    garages = Field()
+    total_floor = Field()
+    furnishing = Field()
+    facing = Field()
+    land_area = Field()
+    handover_date = Field()
+    available_from = Field()
+    description = Field()
+    amenities = Field()
+    facilities_nearby = Field()
+    property_url = Field()
+
+
  
 class HomeFairBD(Item):
     title = Field()
