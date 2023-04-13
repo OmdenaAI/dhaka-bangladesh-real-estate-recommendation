@@ -235,4 +235,16 @@ class BikroyItem(Item):
     property_url= Field()
     property_description = Field()
     building_type = Field()
+    
+class FFSIDItem(Item):
+
+    price = Field()
+    location = Field()
+    property_url = Field()
+    beds = Field()
+    baths = Field()
+    parking = Field()
+    sqft = Field()
+    price_per_sqft = Field()
+    property_type = Field()
 
