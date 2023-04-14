@@ -248,3 +248,17 @@ class FFSIDItem(Item):
     price_per_sqft = Field()
     property_type = Field()
 
+class BtibrokeragebdItem(Item):
+    # define the fields for your item here like:
+    price = Field()
+    location = Field()
+    num_bed_rooms = Field()
+    num_bath_rooms = Field()
+    area = Field()
+    building_type = Field()
+    purpose = Field()
+    amenities = Field()
+    property_url= Field()
+    property_description = Field()
+    property_overview = Field()
+    commercial_type = Field()
