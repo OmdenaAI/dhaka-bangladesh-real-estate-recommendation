@@ -178,6 +178,37 @@ class TheToLetItem(Item):
     price_negotiable = Field()
     property_url = Field()
 
+class PropertysalebdItem(Item):
+    title = Field()
+    property_name = Field()
+    property_type = Field()
+    property_for = Field()
+    location = Field()
+    address = Field()
+    construction_status = Field()
+    property_size = Field()
+    price_per_sqft_or_katha_or_dcml = Field()
+    monthly_rent = Field()
+    total_price = Field()
+    deposit = Field()
+    transaction_type = Field()
+    bedroom = Field()
+    balconies = Field()
+    bathroom = Field()
+    floor_number = Field()
+    garages = Field()
+    total_floor = Field()
+    furnishing = Field()
+    facing = Field()
+    land_area = Field()
+    handover_date = Field()
+    available_from = Field()
+    description = Field()
+    amenities = Field()
+    facilities_nearby = Field()
+    property_url = Field()
+
+
  
 class HomeFairBD(Item):
     title = Field()
@@ -190,3 +221,30 @@ class HomeFairBD(Item):
     amenities = Field()
     purpose = Field()
     listing_url = Field()
+    
+class BikroyItem(Item):
+    # define the fields for your item here like:
+    price = Field()
+    location = Field()
+    num_bed_rooms = Field()
+    num_bath_rooms = Field()
+    area = Field()
+    completion_status = Field()
+    facing = Field()
+    commercial_type = Field()
+    property_url= Field()
+    property_description = Field()
+    building_type = Field()
+    
+class FFSIDItem(Item):
+
+    price = Field()
+    location = Field()
+    property_url = Field()
+    beds = Field()
+    baths = Field()
+    parking = Field()
+    sqft = Field()
+    price_per_sqft = Field()
+    property_type = Field()
+
