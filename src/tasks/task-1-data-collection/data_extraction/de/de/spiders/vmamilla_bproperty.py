@@ -42,7 +42,7 @@ class BpPropertySpider(scrapy.Spider):
         item['price'] = response.css("span._105b8a67::text").get()
         item['location'] = response.css("div._1f0f1758::text").get()
         item['num_bed_rooms'] = response.css("span.fc2d1086::text").get()
-        item['num_bath_rooms'] = response.css("span.fc2d1086::text").get()
+        item['num_bath_rooms'] = response.xpath('//main/div[2]/div[4]/div[1]/div[3]/div[2]/span[2]/span/text()').get()
         item['area'] = response.css("span.fc2d1086 span::text").get()
         item['building_type'] = response.css("ul._033281ab li span._812aa185::text").get()
         item['purpose'] = response.xpath('//span[contains(@aria-label, "Purpose")]/text()').get()
