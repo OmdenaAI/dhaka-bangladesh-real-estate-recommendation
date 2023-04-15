@@ -124,3 +124,19 @@ class ToleterItem(Item):
     Description = Field()
     NearByLocation= Field()
     url=Field()
+
+
+    class RealstateItem(Item):
+    # define the fields for your item here like:
+
+     
+     PropertyType = Field()
+     Size = Field()
+     Amenities = Field()
+     Bathroom=Field()
+     Status=Field()
+     Bed = Field()
+     PricePerMonth =Field()
+     Description = Field()
+     Location= Field()
+     url=Field()
