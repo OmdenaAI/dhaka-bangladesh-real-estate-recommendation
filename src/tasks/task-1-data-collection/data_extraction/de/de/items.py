@@ -21,7 +21,6 @@ class PBazarItem(Item):
     property_type = Field()
     price_per_month = Field()
     price_per_sft = Field()
-    price = Field()
     location = Field()
     area_sft = Field()
     attach_bathrooms = Field()
@@ -36,9 +35,10 @@ class PBazarItem(Item):
     total_floor = Field()
     size_in_katha = Field()
     view = Field()
-    road_width = Field()
-    land_katha = Field()
+    road_width_ft = Field()
     garage_number = Field()
+    property_url = Field()
+    price = Field()
 
 class ashSpiderItem(Item):
     # define the fields for your item here like:
@@ -55,17 +55,17 @@ class ashSpiderItem(Item):
     
     
 class RentalHomeBD(Item):
-    # define the fields for your item here like:
-    basic_info = Field()
+    num_bed =Field()
+    num_bath=Field()
+    area = Field()
     amenities = Field()
     address = Field()
-    type = Field()
+    building_type = Field()
     title = Field()
     price_in_BDT = Field()
     details = Field()
     purpose = Field()
-    page_url = Field()
-    listing_url = Field()
+    listing_url = Field() 
 
 class iqibdPropsItem(Item):
     # define the fields for your item here like:
@@ -90,6 +90,7 @@ class iqibdPropsItem(Item):
     security = Field()
     elevator = Field()
     emergency_stairs = Field()
+
     generator = Field()
     tv_cable = Field()
     government_gas = Field()
@@ -126,17 +127,15 @@ class ToleterItem(Item):
     url=Field()
 
 
-    class RealstateItem(Item):
+class BdstallItem(Item):
     # define the fields for your item here like:
-
-     
-     PropertyType = Field()
-     Size = Field()
-     Amenities = Field()
-     Bathroom=Field()
-     Status=Field()
-     Bed = Field()
-     PricePerMonth =Field()
-     Description = Field()
-     Location= Field()
-     url=Field()
+    PropertyType = Field()
+    Size = Field()
+    Amenities = Field()
+    Bathroom=Field()
+    Status=Field()
+    Bed = Field()
+    PricePerMonth =Field()
+    Description = Field()
+    Location= Field()
+    url=Field()

@@ -75,14 +75,15 @@ class DataExtractionSpider(scrapy.Spider):
 
            
         yield {'title': response.xpath('//*[@id="property-details"]/nav/div/div[1]/h4//text()').get(), 
-        'basic_info' : response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[1]/span//text()').getall(),
+        'num_bed' : response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[1]/span[2]//text()').get(),
+        'num_bath': response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[1]/span[3]//text()').get(),
+        'area': response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[1]/span[1]//text()').get(),
         'amenities' : response.xpath('//*[@id="property-details"]/div[@class="features-box"]/div/div/p/text()').getall(),
-        'address' : response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[2]//text()').get(),
-        'type' : response.xpath('//*[@id="property-details"]/div[1]/div/table/tbody/tr[1]/td[2]//text()').get(),
-        'purpose(rent/sale)' : response.xpath('//*[@id="property-details"]/div[1]/div/table/tbody/tr[2]/td[2]//text()').get(),
+        'location' : response.xpath('//*[@id="property-details"]/nav/div/div[1]/p[2]//text()').get(),
+        'building_type' : response.xpath('//*[@id="property-details"]/div[1]/div/table/tbody/tr[1]/td[2]//text()').get(),
+        'purpose' : response.xpath('//*[@id="property-details"]/div[1]/div/table/tbody/tr[2]/td[2]//text()').get(),
         'price_in_BDT' : response.xpath('//*[@id="property-details"]/nav/div/div[2]/h4/text()').get(),
         'details' : details_cleaned[3:],
-        'page_url': response.meta['url'],
         'listing_url': response.url}
         
 

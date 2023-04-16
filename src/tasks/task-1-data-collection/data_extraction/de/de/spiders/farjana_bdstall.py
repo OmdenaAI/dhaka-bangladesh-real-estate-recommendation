@@ -1,5 +1,5 @@
 import scrapy
-from ..items import RealstateItem
+from ..items import BdstallItem
 from scrapy.spidermiddlewares.httperror import HttpError
 # from items import RealstateItem
 from twisted.internet.error import TimeoutError, TCPTimedOutError
@@ -43,7 +43,7 @@ class Spider2Spider(scrapy.Spider):
 
     def parse_details(self, response):
         
-        item = RealstateItem()
+        item = BdstallItem()
         
         # itt=[]
         # it=response.xpath('//*[@id="main-wrapper"]/section/div/div/div[1]/div[1]/div/div[2]/div[2]/a/text()').getall()
@@ -54,7 +54,7 @@ class Spider2Spider(scrapy.Spider):
 
         # item['PropertyType']= itt
 
-        its=response.xpath('//div[@class="product-desc-feature"]//tr')
+        # its=response.xpath('//div[@class="product-desc-feature"]//tr')
         item['Amenities']= [ ]
         key=response.xpath('//div[@class="product-desc-feature"]//tr/th/text()').getall()
         value=response.xpath('//div[@class="product-desc-feature"]//tr/td/text()').getall()
