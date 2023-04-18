@@ -15,6 +15,7 @@ class BpPropertyItem(Item):
     property_description = Field()
     property_overview = Field()
     commercial_type = Field()
+    image_url = Field()
 
 class PBazarItem(Item):
 
