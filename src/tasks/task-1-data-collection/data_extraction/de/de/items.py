@@ -125,6 +125,7 @@ class ToleterItem(Item):
     PricePerMonth =Field()
     Description = Field()
     NearByLocation= Field()
+    OtherFacilities=Field()
     url=Field()
 
 
