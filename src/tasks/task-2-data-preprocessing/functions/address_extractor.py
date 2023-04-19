@@ -1,30 +1,34 @@
-
 """
  The functions below are developed by @Shariar Hossain Omee
- 
+
  get_detailed_address() :
-    - Take as input an address
-    - Spllit the address into City, Area, Address 
-    - Return a dictionnary containing City, Area, Address as keys
- 
+    - Take a full address as input
+    - Split the address into City, Area, Address
+    - Return a dictionary containing City, Area (a.k.a. "Locality"), Address as keys
+
 """
 
+
 def get_detailed_address(address):
-    address = address.title()
-    address_dict = {"City": "", "Area": "", "Address": ""}
-    splitted_address = address.split(',')
+    try:
+        address = address.title()
+        address_dict = {"city": "", "area": "", "address": ""}
+        splitted_address = address.split(',')
 
-    for i in reversed(splitted_address):
-        if get_city_name(i.strip()):
-            address_dict["City"] = i.strip()
-            splitted_address.remove(i)
-        elif get_area_name(i.strip()):
-            address_dict["Area"] = i.strip()
-            splitted_address.remove(i)
+        for i in reversed(splitted_address):
+            if get_city_name(i.strip().replace('.', '')):
+                address_dict["city"] = i.strip().replace('.', '')
+                splitted_address.remove(i)
+            elif get_area_name(i.strip().replace('.', '')):
+                address_dict["area"] = i.strip().replace('.', '')
+                splitted_address.remove(i)
 
-    address_dict["Address"] = ','.join(splitted_address)
+        address_dict["address"] = ','.join(splitted_address)
 
-    return address_dict
+        return address_dict
+
+    except:
+        return {"city": "", "area": "", "address": address}
 
 
 def get_city_name(name):
@@ -39,7 +43,6 @@ def get_city_name(name):
 
 
 def get_area_name(name):
-
     areas = ['10 No. North Kattali Ward', '11 No. South Kattali Ward', '15 No. Bagmoniram Ward',
              '16 No. Chawk Bazaar Ward', '22 No. Enayet Bazaar Ward', '29 No. West Madarbari Ward',
              '30 No. East Madarbari Ward', '31 No. Alkoron Ward', '32 No. Andarkilla Ward',
@@ -58,8 +61,9 @@ def get_area_name(name):
              'Rampura', 'Riaj Uddin Bazar', 'Sagorika Bscic Industrial Area', 'Savar', 'Shahbagh', 'Shahjahanpur',
              'Shantinagar', 'Shegunbagicha', 'Shiddheswari', 'Shiddhirganj', 'Sholokbahar', 'Shyamoli', 'Shyampur',
              'Sreepur', 'Sutrapur', 'Taltola', 'Tejgaon', 'Turag', 'Uttar Khan', 'Uttar Lalkhan', 'Uttara', 'Zafrabad',
-             'Zindabazar']
-
+             'Zindabazar', 'Siddeshwari', 'Bashundhara', 'Bashundhara Riverview', 'North  Nandipara', 'Keraniganj',
+             'South Banasree', 'Nandipara', 'Aftabnagar', 'Modhubag', 'Senpara Porbota', 'Bosila', 'East Rampura',
+             'Mugda', 'Mohammadpur', 'West Khulshi', 'Bashundhara R/A', 'West Rampura', 'Chawkbazar', 'Chandanpur']
 
     try:
         areas.index(name)
