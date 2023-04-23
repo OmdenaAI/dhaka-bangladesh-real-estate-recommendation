@@ -74,7 +74,7 @@ class Spider1Spider(scrapy.Spider):
         item['Location']=response.xpath('//*[@id="main-wrapper"]/section/div/div/div[1]/div[1]/div/span/text()').get().encode('utf-8')
         item['Description']=response.xpath('//*[@id="clTwo"]/div/p//text()').getall()
         item['NearByLocation']=response.xpath('//*[@id="nearPlace"]/div/div/span/text()').getall()
-
+        item['OtherFacilities']=response.xpath('//*[@id="otherFeats"]/div/div/span/text()').getall()
         item['url']=response.url
         
 
