@@ -262,3 +262,16 @@ class BtibrokeragebdItem(Item):
     property_description = Field()
     property_overview = Field()
     commercial_type = Field()
+
+class BdHousingItem(Item):
+
+    price = Field()
+    location = Field()
+    property_url = Field()
+    baths = Field()
+    bedroom = Field()
+    balconies = Field()
+    area = Field()
+    purpose = Field()
+    property_type = Field()
+    amenities = Field()
