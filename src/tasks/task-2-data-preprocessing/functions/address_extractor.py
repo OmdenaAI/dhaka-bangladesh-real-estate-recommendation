@@ -2,36 +2,74 @@
  The functions below are developed by @Shariar Hossain Omee
 
  get_detailed_address() :
-    - Take a full address as input
+    - Take a full comma separated address as input
     - Split the address into City, Area, Address
     - Return a dictionary containing City, Area (a.k.a. "Locality"), Address as keys
 
+This function splits input address according to the commas, then it checks each separated string with the values in
+the arrays which we pre-defined in the function. It will return one area name under the 'Area' key and one city name
+under the 'City' key, if it could match them with the pre-defined areas and cities in the function , the rest of the
+string or address will be under the 'Address' key.
+
+For example,
+    Input --> "Block M, South Banasree Project, Banasree, Dhaka"
+    Output --> {"city": "Dhaka", "area": "Banasree", "address": "Block M, South Banasree Project"}
+
+Note: The input has to be comma separated in order to get meaningful output like the example above. Otherwise, it
+won't recognize the address properly.
+
+please, see the commented notebook of bproperty (https://github.com/OmdenaAI/dhaka-bangladesh-real-estate-
+recommendation/blob/main/src/tasks/task-2-data-preprocessing/bproperty%20--%20cleaning/bproperty%20--%20cleaning.ipynb)
+for use.
+
+Note: This function doesn't have all the areas and cities of Bangladesh yet. I am adding them periodically according
+to the upload cleaned dataset.
 """
 
 
 def get_detailed_address(address):
     try:
+        # converting the initial letter of each word to a capital letter of input.
         address = address.title()
+
+        # defining output dictionary
         address_dict = {"city": "", "area": "", "address": ""}
+
+        # splitting the input according to commas
         splitted_address = address.split(',')
 
+        # getting each splitted and checking them with pre-defined address and area names.
         for i in reversed(splitted_address):
+
+            # calling get_city_name() and passing name from splitted address
             if get_city_name(i.strip().replace('.', '')):
+                # assigning matched city name under the "city" key.
                 address_dict["city"] = i.strip().replace('.', '')
-                splitted_address.remove(i)
-            elif get_area_name(i.strip().replace('.', '')):
-                address_dict["area"] = i.strip().replace('.', '')
+                # removing the matched name from the splitted address list.
                 splitted_address.remove(i)
 
+            # calling get_area_name() and passing name from splitted address
+            elif get_area_name(i.strip().replace('.', '')):
+                # assigning matched area name under the "area" key.
+                address_dict["area"] = i.strip().replace('.', '')
+                # removing the matched name from the splitted address list.
+                splitted_address.remove(i)
+
+        # joining the rest of the input and assigning it under the "address" key.
         address_dict["address"] = ','.join(splitted_address)
 
+        # returning the output dictionary
         return address_dict
 
     except:
+
+        # if any exception occurs, it assigns the whole input under the "address" key and return the dictionary
         return {"city": "", "area": "", "address": address}
 
 
 def get_city_name(name):
+
+    # a list containing different cities of Bangladesh
     cities = ['Dhaka', 'Chattogram', 'Narayanganj City', 'Gazipur', 'Sylhet', 'Barishal', 'Bhairab', 'Bogura',
               'Brahmanbaria', 'Chandpur', 'Chittagong', 'Chowmuhani', 'Chuadanga', 'Coxs Bazar',
               'Cumilla', 'Cumilla Sadar Dakshin', 'Dinajpur', 'Faridpur', 'Feni', 'Gazipur', 'Jamalpur',
@@ -40,14 +78,20 @@ def get_city_name(name):
               'Savar', 'Siddhirganj', 'Sirajganj', 'Sreepur', 'Tangail', 'Tarabo', 'Tongi']
 
     try:
+
+        # if it finds match with the input, it returns true.
         cities.index(name)
         return True
 
     except:
+
+        # if it doesn't find any match with the input, it returns false.
         return False
 
 
 def get_area_name(name):
+
+    # a list containing different areas of Bangladesh
     areas = ['10 No. North Kattali Ward', '11 No. South Kattali Ward', '15 No. Bagmoniram Ward',
              '16 No. Chawk Bazaar Ward', '22 No. Enayet Bazaar Ward', '29 No. West Madarbari Ward',
              '30 No. East Madarbari Ward', '31 No. Alkoron Ward', '32 No. Andarkilla Ward',
@@ -125,8 +169,13 @@ def get_area_name(name):
              'Sunamganj', 'Swarupkati', 'Tanore', 'Tarabo', 'Teknaf', 'Thakurgaon', 'Trishal', 'Ulipur', 'Ullahpara']
 
     try:
+
+        # if it finds match with the input, it returns true.
         areas.index(name)
         return True
 
     except:
+
+        # if it doesn't find any match with the input, it returns false.
         return False
+
