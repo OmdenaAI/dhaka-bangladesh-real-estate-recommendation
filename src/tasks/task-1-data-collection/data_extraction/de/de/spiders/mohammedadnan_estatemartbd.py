@@ -5,6 +5,10 @@ from selenium import webdriver
 from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 from selenium.webdriver.common.by import By
+import re
+from googletrans import Translator, constants
+
+
 
 
 class StartSpider(scrapy.Spider):
@@ -38,16 +42,36 @@ class StartSpider(scrapy.Spider):
         
         
     def parse_data(self,response):
+        
+        
+       
+        name = response.css("div.card-body a h3::text").get(default = "N\A").replace("\n","")
+        desc = "".join(response.xpath('/html/body/div[2]/section[2]/div/div[3]/div/div[1]/div/div[3]/p/text()').getall()).strip()
+        
+       
+
+        
+        if bool(re.search(" [Hh]ouse | [Aa]partment | [fF]lat | [dD]uplex | [hH]ome | [iI]ndependent House",desc)) or bool(re.search(" অ্যাপার্টমেন্ট | [Hh]ouse | [Aa]partment | [fF]lat | [dD]uplex | [hH]ome | [iI]ndependent House",name)) :
+            type = "Residential"
+        elif bool(re.search("[oO]ffice space | [sS]howroom | [sS]hop | [rR]estaurant",desc)) or bool(re.search("[oO]ffice space | [sS]howroom | [sS]hop | [rR]estaurant",name)):
+            type = "Commercial"
+        else:
+            type = "None"
+
         yield {
             "Name":response.css("div.card-body a h3::text").get(default = "N\A").replace("\n","").encode('utf-8'),
             "Location":response.css("div.details-info ul li span::text").get(default = "N\A"),
             "Bathrooms":[response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Bathrooms:"],
             "Bedrooms":[response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Bedrooms:"],
             "Size (in sqft)":[response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Size:"],
-            "Size Range (in sqft)":[response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Size ( Range ):"],
+            
             "Price per sqft":[response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A").replace("৳","") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Price Per SqFt:"],
             "Ownership type":  [response.css("div.details-info").xpath(f"ul/li[{num}]/span/text()").get(default ="N\A") for num in range(0,11) if response.css("div.details-info").xpath(f"ul/li[{num}]/h4/text()").get()  == "Ownership:"],
+            
+            "Description" : desc,
+            "Posting" : response.css("div.rate-info  span::text").get(),
             "Features": [j.css("small::text").get(default = "N\A") for i in response.css("form.form_field") for j in i.css("li.input-field")],
+            "property_type" : type,
             "Total price":response.css("div.rate-info h5::text").get(default = "N\A").replace(" ","").replace("\n","").replace("৳",""),
             "AD URL" : response.url
 
@@ -59,3 +83,4 @@ class StartSpider(scrapy.Spider):
 
 
 
+#
