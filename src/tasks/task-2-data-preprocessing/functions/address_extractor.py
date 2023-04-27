@@ -74,7 +74,8 @@ def get_city_name(name):
               'Dinajpur', 'Faridpur', 'Feni', 'Gazipur', 'Jamalpur', 'Jashore', 'Jhenaidah', 'Khulna', 'Kishoreganj',
               'Kushtia', 'Maijdee', 'Mymensingh', 'Naogaon', 'Narayanganj', 'Narayanganj City', 'Narayangonj',
               'Narsingdi', 'Nawabganj', 'Pabna', 'Rajshahi', 'Rangpur', 'Saidpur', 'Satkhira', 'Savar', 'Siddhirganj',
-              'Sirajganj', 'Sreepur', 'Sylhet', 'Tangail', 'Tarabo', 'Tongi']
+              'Sirajganj', 'Sreepur', 'Sylhet', 'Tangail', 'Tarabo', 'Tongi', 'Sonargoan', 'Manikganj', 'Faridpur',
+              'Netrokona', 'Chapai Nawabganj']
 
     try:
 
@@ -132,7 +133,7 @@ def get_area_name(name):
              'Kurigram', 'Kuril', 'Kushtia', 'Kushtia Sadar', 'Laksham', 'Lakshmipur', 'Lakshmipur Sadar',
              'Lal Khan Bazaar', 'Lalbag', 'Lalbagh', 'Lalmatia', 'Lalmohan', 'Lalmonirhat', 'Lalpur', 'Lama',
              'Lohagara', 'Madarganj', 'Madaripur', 'Madaripur Sadar', 'Madhabdi', 'Madhabpur', 'Madhupur', 'Maghbazar',
-             'Magura', 'Magura Sadar', 'Maheshkhali', 'Maheshpur', 'Malibag', 'Malibagh', 'Manikganj',
+             'Magura', 'Magura Sadar', 'Maheshkhali', 'Maheshpur', 'Malibag', 'Malibagh',
              'Manikganj Sadar', 'Maniknagar', 'Manirampur', 'Matiranga', 'Matlab', 'Matuail', 'Maulvi Bazar',
              'Mehendiganj', 'Meherpur', 'Melandaha', 'Mirkadim', 'Mirpur', 'Mirpur 1', 'Mirpur 10', 'Mirpur 11',
              'Mirpur 12', 'Mirpur 13', 'Mirpur 14', 'Mirpur 2', 'Mirpur 6', 'Mirpur Dohs', 'Mirsharai', 'Mirzapur',
@@ -141,7 +142,7 @@ def get_area_name(name):
              'Mugda', 'Mugda Para', 'Mugdapara', 'Muksudpur', 'Muktagacha', 'Muktagachha', 'Muladi', 'Mundumala',
              'Munshiganj', 'Munshiganj Sadar', 'Muradpur', 'Mymensingh City', 'Nabiganj', 'Nabinagar', 'Nadda',
              'Nageshwari', 'Nakhalpara', 'Nakla', 'Nalchiti', 'Nalitabari', 'Nandail', 'Nandipara', 'Nangalkot',
-             'Naogaon Sadar', 'Naohata', 'Narail', 'Narayanganj', 'Narayangonj Sadar', 'Naria', 'Narinda', 'Narsingdi',
+             'Naogaon Sadar', 'Naohata', 'Narail', 'Narayanganj', 'Narayangonj Sadar', 'Naria', 'Narinda',
              'Narsingdi Sadar', 'Nasirbad', 'Natore', 'Natore Sadar', 'Nazipur', 'Netrakona', 'Netrokona Sadar',
              'New Market', 'Niketan', 'Niketon', 'Nikunja', 'Nikunjo', 'Nilphamari', 'Nilphamari Sadar', 'Noakhali',
              'Noakhali Sadar', 'Noapara', 'North  Nandipara', 'North Shahjahanpur', 'Pabna Sadar', 'Pahartali',
@@ -168,7 +169,11 @@ def get_area_name(name):
              'MohakhaliDOHS', 'MirpurDOHS', 'Choukbazar', 'Zigatola', 'Basundhara', 'DakhinKhan', 'BananiDOHS',
              'ElephantRoad', 'Kalyanpur', 'NayaPaltan', 'Rajabazar', 'Mogbazar', 'Shagun Bagicha', 'Shiddeshwari',
              'Gabtoli', 'Shanti Nagar', 'Bangla Motor', 'Gulshan-1', 'Gulshan-2', 'Baridhara Diplomatic Zone',
-             'Bashundhara R /A', 'Arapur', 'Golmari']
+             'Bashundhara R /A', 'Arapur', 'Golmari', 'Bashundhara Residential Area', 'Joydebpur', 'Purbachal New Town',
+             'Pubail', 'Gulshan One', 'Adabar', 'Dhaka Cantonment', 'Rangpur City Corporation', 'Shitakunda', 'Valuka',
+             'Baily Road', 'Faridpur City', 'Boshila', 'Madhabadi', 'Uposhohor', 'Baipayl', 'Faujdarhat', 'Naya Paltan',
+             'Kona Bari', 'Zirabo', 'Shukrabad', 'Elephant Rd', 'Segun Bagicha', 'Subid Bazar', 'Sokipur', 'Kalurghat',
+             'Kemal Ataturk Avenue', 'Progoti Sarani']
 
     try:
 
