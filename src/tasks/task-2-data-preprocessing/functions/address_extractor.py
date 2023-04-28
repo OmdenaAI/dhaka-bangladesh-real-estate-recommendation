@@ -4,16 +4,16 @@
  get_detailed_address() :
     - Take a full comma separated address as input
     - Split the address into City, Area, Address
-    - Return a dictionary containing City, Area (a.k.a. "Locality"), Address as keys
+    - Return a dictionary containing city, locality (a.k.a. area), address as keys
 
 This function splits input address according to the commas, then it checks each separated string with the values in
-the arrays which we pre-defined in the function. It will return one area name under the 'Area' key and one city name
-under the 'City' key, if it could match them with the pre-defined areas and cities in the function , the rest of the
-string or address will be under the 'Address' key.
+the arrays which we pre-defined in the function. It will return one area name under the 'locality' key and one city name
+under the 'city' key, if it could match them with the pre-defined areas and cities in the function , the rest of the
+string or address will be under the 'address' key.
 
 For example,
     Input --> "Block M, South Banasree Project, Banasree, Dhaka"
-    Output --> {"city": "Dhaka", "area": "Banasree", "address": "Block M, South Banasree Project"}
+    Output --> {"city": "Dhaka", "locality": "Banasree", "address": "Block M, South Banasree Project"}
 
 Note: The input has to be comma separated in order to get meaningful output like the example above. Otherwise, it
 won't recognize the address properly.
@@ -33,7 +33,7 @@ def get_detailed_address(address):
         address = address.title()
 
         # defining output dictionary
-        address_dict = {"city": "", "area": "", "address": ""}
+        address_dict = {"city": "", "locality": "", "address": ""}
 
         # splitting the input according to commas
         splitted_address = address.split(',')
@@ -51,7 +51,7 @@ def get_detailed_address(address):
             # calling get_area_name() and passing name from splitted address
             elif get_area_name(i.strip().replace('.', '')):
                 # assigning matched area name under the "area" key.
-                address_dict["area"] = i.strip().replace('.', '')
+                address_dict["locality"] = i.strip().replace('.', '')
                 # removing the matched name from the splitted address list.
                 splitted_address.remove(i)
 
@@ -64,18 +64,22 @@ def get_detailed_address(address):
     except:
 
         # if any exception occurs, it assigns the whole input under the "address" key and return the dictionary
-        return {"city": "", "area": "", "address": address}
+        return {"city": "", "locality": "", "address": address}
 
 
 def get_city_name(name):
-    # a list containing different cities of Bangladesh
-    cities = ['Barishal', 'Bhairab', 'Bogra', 'Bogura', 'Brahmanbaria', 'Chandpur', 'Chattogram', 'Chittagong',
-              'Chowmuhani', 'Chuadanga', 'Comilla', 'Coxs Bazar', 'Cumilla', 'Cumilla Sadar Dakshin', 'Dhaka',
-              'Dinajpur', 'Faridpur', 'Feni', 'Gazipur', 'Jamalpur', 'Jashore', 'Jhenaidah', 'Khulna', 'Kishoreganj',
-              'Kushtia', 'Maijdee', 'Mymensingh', 'Naogaon', 'Narayanganj', 'Narayanganj City', 'Narayangonj',
-              'Narsingdi', 'Nawabganj', 'Pabna', 'Rajshahi', 'Rangpur', 'Saidpur', 'Satkhira', 'Savar', 'Siddhirganj',
-              'Sirajganj', 'Sreepur', 'Sylhet', 'Tangail', 'Tarabo', 'Tongi', 'Sonargoan', 'Manikganj', 'Faridpur',
-              'Netrokona', 'Chapai Nawabganj']
+    # a list containing different cities and districts of Bangladesh
+    cities = ['Bandar', 'Bandarban', 'Barguna', 'Barishal', 'Bhairab', 'Bhola', 'Bogra', 'Bogura', 'Brahmanbaria',
+              'Chandpur', 'Chapai Nawabganj', 'Chattogram', 'Chittagong', 'Chowmuhani', 'Chuadanga', 'Comilla',
+              'Coxs Bazar', 'Cumilla', 'Cumilla Sadar Dakshin', 'Dhaka', 'Dinajpur', 'Faridpur', 'Feni', 'Gaibandha',
+              'Gazipur', 'Gopalganj', 'Habiganj', 'Jamalpur', 'Jashore', 'Jessore', 'Jhalokathi', 'Jhenaidah',
+              'Joypurhat', 'Kaliakair', 'Khagrachari', 'Khulna', 'Kishoreganj', 'Kurigram', 'Kushtia', 'Kustia',
+              'Lalmonirhat', 'Laxmipur', 'Madaripur', 'Magura', 'Maijdee', 'Manikganj', 'Maulvibazar', 'Meherpur',
+              'Munsiganj', 'Mymensingh', 'Naogaon', 'Narail', 'Narayanganj', 'Narayanganj City', 'Narayangonj',
+              'Narsingdi', 'Natore', 'Nawabganj', 'Netrokona', 'Nilphamari', 'Noakhali', 'Pabna', 'Panchagarh',
+              'Pirojpur', 'Potuakhali', 'Rajbari', 'Rajshahi', 'Rangamati', 'Rangpur', 'Saidpur', 'Satkhira', 'Savar',
+              'Shariatpur', 'Sherpur', 'Siddhirganj', 'Sirajganj', 'Sonargoan', 'Sreepur', 'Sunamganj', 'Sylhet',
+              'Tangail', 'Tarabo', 'Thakurgaon', 'Tongi', 'TongiBagerhat', 'Coxs Bazar']
 
     try:
 
@@ -94,86 +98,86 @@ def get_area_name(name):
     areas = ['11 No. South Kattali Ward', '15 No. Bagmoniram Ward', '16 No. Chawk Bazaar Ward',
              '22 No. Enayet Bazaar Ward', '29 No. West Madarbari Ward', '30 No. East Madarbari Ward',
              '31 No. Alkoron Ward', '32 No. Andarkilla Ward', '33 No. Firingee Bazaar Ward', '36 Goshail Danga Ward',
-             '4 No Chandgaon Ward', '7 No. West Sholoshohor Ward', '9 No. North Pahartali Ward', 'Adabor',
+             '4 No Chandgaon Ward', '7 No. West Sholoshohor Ward', '9 No. North Pahartali Ward', 'Adabar', 'Adabor',
              'Aftab Nagar', 'Aftabnagar', 'Agargaon', 'Agrabad', 'Airport', 'Akhaura', 'Akkelpur', 'Alamdanga',
-             'Ambarkhana', 'Araihazar', 'Ashkona', 'Ashulia', 'Azimpur', 'Azompur', 'Badarganj', 'Badda', 'Bagerhat',
-             'Bagerhat Sadar', 'Bagha', 'Bajitpur', 'Bakalia', 'Banani', 'Banani Dohs', 'Banashree', 'Banasree',
-             'Bandar', 'Bandarban', 'Bandarban Sadar', 'Banglamotor', 'Banglamotors', 'Bangshal', 'Banshkhali',
-             'Baraigram', 'Barguna', 'Barguna Sadar', 'Baridhara', 'Baridhara Dohs', 'Barishal City', 'Barlekha',
-             'Barura', 'Basabo', 'Bashabo', 'Bashundhara', 'Bashundhara R-A', 'Bashundhara R/A', 'Bashundhara RA',
-             'Bashundhara Riverview', 'Basila', 'Basurhat', 'Bayazid', 'Beani Bazar', 'Belabo', 'Belkuchi', 'Benapole',
-             'Bera', 'Bhairab', 'Bhaluka', 'Bhandaria', 'Bhanga', 'Bhangura', 'Bhashantek ', 'Bheramara', 'Bhola',
-             'Bhola Sadar', 'Bhuapur', 'Birampur', 'Birganj', 'Boalkhali', 'Boalmari', 'Bogura Sadar', 'Bosila',
-             'Botiaghata', 'Brahmanbaria Sadar', 'Cantonment', 'Chack Bazar', 'Chak Bazar', 'Chakaria', 'Chandanaish',
-             'Chandanpur', 'Chandgaon', 'Chandina', 'Chandpur', 'Chandpur Sadar', 'Chandra', 'Chapainawabganj Sadar',
-             'Char Fasson', 'Charghat', 'Chatkhil', 'Chattogram City', 'Chauddagram', 'Chaugachha', 'Chaumohoni',
-             'Chawkbazar', 'Chhagalnaiya', 'Chhatak', 'Chhengarchar', 'Chuadanga', 'Chunarughat', 'Comilla Cantonment',
+             'Ambarkhana', 'Araihazar', 'Arapur', 'Ashkona', 'Ashulia', 'Azimpur', 'Azompur', 'Badarganj', 'Badda',
+             'Bagerhat', 'Bagerhat Sadar', 'Bagha', 'Baily Road', 'Baipayl', 'Bajitpur', 'Bakalia', 'Banani',
+             'Banani Dohs', 'BananiDOHS', 'Banashree', 'Banasree', 'Bandar', 'Bandarban', 'Bandarban Sadar',
+             'Bangla Motor', 'Banglamotor', 'Banglamotors', 'Bangshal', 'Banshkhali', 'Baraigram', 'Barguna',
+             'Barguna Sadar', 'Baridhara', 'Baridhara Diplomatic Zone', 'Baridhara Dohs', 'Barishal City', 'Barlekha',
+             'Barura', 'Basabo', 'Bashabo', 'Bashundhara', 'Bashundhara R /A', 'Bashundhara R-A', 'Bashundhara R/A',
+             'Bashundhara RA', 'Bashundhara Residential Area', 'Bashundhara Riverview', 'Basila', 'Basundhara',
+             'Basurhat', 'Bayazid', 'Beani Bazar', 'Belabo', 'Belkuchi', 'Benapole', 'Bera', 'Bhairab', 'Bhaluka',
+             'Bhandaria', 'Bhanga', 'Bhangura', 'Bhashantek ', 'Bheramara', 'Bhola', 'Bhola Sadar', 'Bhuapur',
+             'Birampur', 'Birganj', 'Boalkhali', 'Boalmari', 'Bogura Sadar', 'Boshila', 'Bosila', 'Botiaghata',
+             'Brahmanbaria Sadar', 'Cantonment', 'Chack Bazar', 'Chak Bazar', 'Chakaria', 'Chandanaish', 'Chandanpur',
+             'Chandgaon', 'Chandina', 'Chandpur', 'Chandpur Sadar', 'Chandra', 'Chapainawabganj Sadar', 'Char Fasson',
+             'Charghat', 'Chatkhil', 'Chattogram City', 'Chauddagram', 'Chaugachha', 'Chaumohoni', 'Chawkbazar',
+             'Chhagalnaiya', 'Chhatak', 'Chhengarchar', 'Choukbazar', 'Chuadanga', 'Chunarughat', 'Comilla Cantonment',
              'Cornelhat', "Cox's Bazar Sadar", 'Coxs Bazar', 'Cumilla City', 'DOHS Banani', 'DOHS Baridhara',
-             'DOHS Mirpur', 'DOHS Mohakhali', 'Daganbhuiyan', 'Dakshin Khan', 'Dakshinsurma', 'Darshana', 'Daskhinkhan',
-             'Daudkandi', 'Debidwar', 'Demra', 'Derai', 'Dewanganj', 'Dhamrai', 'Dhanbari', 'Dhanmondi', 'Dhour',
-             'Digholia', 'Dinajpur Sadar', 'Diyabari', 'Dohar', 'Dohar ', 'Double Mooring', 'Dumni', 'Dupchanchia',
-             'Durgapur', 'East Nasirabad', 'East Rampura', 'Eskaton', 'Fakirhat', 'Faridganj', 'Faridpur',
-             'Faridpur Sadar', 'Farmgate', 'Fatulla', 'Fenchuganj', 'Feni', 'Feni Sadar', 'Firojshah Colony',
-             'Fulbaria', 'Gabtali', 'Gaffargaon', 'Gaibandha', 'Gaibandha Sadar', 'Gajaria', 'Galachipa', 'Gandaria ',
+             'DOHS Mirpur', 'DOHS Mohakhali', 'Daganbhuiyan', 'DakhinKhan', 'Dakshin Khan', 'Dakshinsurma', 'Darshana',
+             'Daskhinkhan', 'Daudkandi', 'Debidwar', 'Demra', 'Derai', 'Dewanganj', 'Dhaka Cantonment', 'Dhamrai',
+             'Dhanbari', 'Dhanmondi', 'Dhour', 'Digholia', 'Dinajpur Sadar', 'Diyabari', 'Dohar', 'Dohar ',
+             'Double Mooring', 'Dumni', 'Dupchanchia', 'Durgapur', 'East Nasirabad', 'East Rampura', 'Elephant Rd',
+             'ElephantRoad', 'Eskaton', 'Fakirhat', 'Faridganj', 'Faridpur', 'Faridpur City', 'Faridpur Sadar',
+             'Farmgate', 'Fatulla', 'Faujdarhat', 'Fenchuganj', 'Feni', 'Feni Sadar', 'Firojshah Colony', 'Fulbaria',
+             'Gabtali', 'Gabtoli', 'Gaffargaon', 'Gaibandha', 'Gaibandha Sadar', 'Gajaria', 'Galachipa', 'Gandaria ',
              'Gangni', 'Gaurnadi', 'Gazipur Sadar', 'Gazipur Sadar Upazila', 'Ghatail', 'Ghoraghat', 'Ghorashal',
-             'Goalunda Ghat', 'Gobindaganj', 'Godagari', 'Gohail Road', 'Golapganj', 'Gollamari', 'Gopalganj',
-             'Gopalganj Sadar', 'Gopalpur', 'Goran', 'Gouripur', 'Green Road', 'Gulistan', 'Gulshan', 'Gulshan 01',
-             'Gulshan 02', 'Gulshan 1', 'Gulshan 2', 'Gurudaspur', 'Habiganj', 'Habiganj Sadar', 'Hajiganj', 'Hakimpur',
-             'Halishahar', 'Haragacha', 'Harinakundu', 'Hathazari', 'Hatirpool', 'Hatiya', 'Hazaribag', 'Hazaribag ',
-             'Hemayetpur', 'Homna', 'Hossainpur', 'Ibrahimpur', 'Ishwardi', 'Ishwarganj', 'Islampur', 'Jagannathpur',
-             'Jaintiapur', 'Jaipurhat', 'Jajira', 'Jalalabad Housing Society', 'Jaldhaka', 'Jamal Khan',
-             'Jamalpur Sadar', 'Jashore Sadar', 'Jatra Bari', 'Jatrabari', 'Jhalakathi Sadar', 'Jhalakati', 'Jhenaidah',
-             'Jhenaidah Sadar', 'Jhigatala', 'Jhikargacha', 'Jibannagar', 'Joar Sahara', 'Joypurhat Sadar', 'Kachua',
-             'Kachukhet', 'Kadamtali', 'Kafrul', 'Kakrail', 'Kalabagan', 'Kalachandpur', 'Kalapara', 'Kalaroa', 'Kalia',
-             'Kaliakair', 'Kaliganj', 'Kalihati', 'Kalkini', 'Kallaynpur', 'Kallyanpur', 'Kamalapur', 'Kamarkhand',
-             'Kamrangir Char', 'Kamrangirchar', 'Kanaighat', 'Kanchan', 'Karimganj', 'Karnafuli', 'Karwan Bazar',
-             'Kasba', 'Katakhali', 'Kathalbagan', 'Katiadi', 'Kawran Bazar', 'Kazipara', 'Kazir Dewri', 'Kendua',
-             'Keraniganj', 'Keshabpur', 'Kesharhat', 'Khagrachhari', 'Khan Jahan Ali', 'Khilgaon', 'Khilkhet',
-             'Khulna City', 'Khulshi', 'Kishoreganj', 'Kotchandpur', 'Kotwali', 'Kulaura', 'Kuliarchar', 'Kumarkhali',
+             'Goalunda Ghat', 'Gobindaganj', 'Godagari', 'Gohail Road', 'Golapganj', 'Gollamari', 'Golmari',
+             'Gopalganj', 'Gopalganj Sadar', 'Gopalpur', 'Goran', 'Gouripur', 'Green Road', 'Gulistan', 'Gulshan',
+             'Gulshan 01', 'Gulshan 02', 'Gulshan 1', 'Gulshan 2', 'Gulshan One', 'Gulshan-1', 'Gulshan-2',
+             'Gurudaspur', 'Habiganj', 'Habiganj Sadar', 'Hajiganj', 'Hakimpur', 'Halishahar', 'Haragacha',
+             'Harinakundu', 'Hathazari', 'Hatirpool', 'Hatiya', 'Hazaribag', 'Hazaribag ', 'Hemayetpur', 'Homna',
+             'Hossainpur', 'Ibrahimpur', 'Ishwardi', 'Ishwarganj', 'Islampur', 'Jagannathpur', 'Jaintiapur',
+             'Jaipurhat', 'Jajira', 'Jalalabad Housing Society', 'Jaldhaka', 'Jamal Khan', 'Jamalpur Sadar',
+             'Jashore Sadar', 'Jatra Bari', 'Jatrabari', 'Jhalakathi Sadar', 'Jhalakati', 'Jhenaidah',
+             'Jhenaidah Sadar', 'Jhigatala', 'Jhikargacha', 'Jibannagar', 'Joar Sahara', 'Joydebpur', 'Joypurhat Sadar',
+             'Kachua', 'Kachukhet', 'Kadamtali', 'Kafrul', 'Kakrail', 'Kalabagan', 'Kalachandpur', 'Kalapara',
+             'Kalaroa', 'Kalia', 'Kaliakair', 'Kaliganj', 'Kalihati', 'Kalkini', 'Kallayanpur', 'Kallaynpur',
+             'Kallyanpur', 'Kalurghat', 'Kalyanpur', 'Kamalapur', 'Kamarkhand', 'Kamrangir Char', 'Kamrangirchar',
+             'Kanaighat', 'Kanchan', 'Karimganj', 'Karnafuli', 'Karwan Bazar', 'Kasba', 'Katakhali', 'Kathalbagan',
+             'Katiadi', 'Kawran Bazar', 'Kazipara', 'Kazir Dewri', 'Kemal Ataturk Avenue', 'Kendua', 'Keraniganj',
+             'Keshabpur', 'Kesharhat', 'Khagrachhari', 'Khan Jahan Ali', 'Khilgaon', 'Khilkhet', 'Khulna City',
+             'Khulshi', 'Kishoreganj', 'Kona Bari', 'Kotchandpur', 'Kotwali', 'Kulaura', 'Kuliarchar', 'Kumarkhali',
              'Kurigram', 'Kuril', 'Kushtia', 'Kushtia Sadar', 'Laksham', 'Lakshmipur', 'Lakshmipur Sadar',
              'Lal Khan Bazaar', 'Lalbag', 'Lalbagh', 'Lalmatia', 'Lalmohan', 'Lalmonirhat', 'Lalpur', 'Lama',
-             'Lohagara', 'Madarganj', 'Madaripur', 'Madaripur Sadar', 'Madhabdi', 'Madhabpur', 'Madhupur', 'Maghbazar',
-             'Magura', 'Magura Sadar', 'Maheshkhali', 'Maheshpur', 'Malibag', 'Malibagh',
-             'Manikganj Sadar', 'Maniknagar', 'Manirampur', 'Matiranga', 'Matlab', 'Matuail', 'Maulvi Bazar',
-             'Mehendiganj', 'Meherpur', 'Melandaha', 'Mirkadim', 'Mirpur', 'Mirpur 1', 'Mirpur 10', 'Mirpur 11',
-             'Mirpur 12', 'Mirpur 13', 'Mirpur 14', 'Mirpur 2', 'Mirpur 6', 'Mirpur Dohs', 'Mirsharai', 'Mirzapur',
-             'Mithapukur', 'Modhubag', 'Moghbazar', 'Mohakhali', 'Mohakhali Dohs', 'Mohammadpur', 'Mohammadpur ',
-             'Mohanganj', 'Mongla', 'Monipur10 No. North Kattali Ward', 'Morrelganj', 'Motijheel', 'Moulvibazar Sadar',
-             'Mugda', 'Mugda Para', 'Mugdapara', 'Muksudpur', 'Muktagacha', 'Muktagachha', 'Muladi', 'Mundumala',
-             'Munshiganj', 'Munshiganj Sadar', 'Muradpur', 'Mymensingh City', 'Nabiganj', 'Nabinagar', 'Nadda',
-             'Nageshwari', 'Nakhalpara', 'Nakla', 'Nalchiti', 'Nalitabari', 'Nandail', 'Nandipara', 'Nangalkot',
-             'Naogaon Sadar', 'Naohata', 'Narail', 'Narayanganj', 'Narayangonj Sadar', 'Naria', 'Narinda',
-             'Narsingdi Sadar', 'Nasirbad', 'Natore', 'Natore Sadar', 'Nazipur', 'Netrakona', 'Netrokona Sadar',
-             'New Market', 'Niketan', 'Niketon', 'Nikunja', 'Nikunjo', 'Nilphamari', 'Nilphamari Sadar', 'Noakhali',
-             'Noakhali Sadar', 'Noapara', 'North  Nandipara', 'North Shahjahanpur', 'Pabna Sadar', 'Pahartali',
-             'Pakundia', 'Pallabi', 'Pallabi ', 'Paltan', 'Panchagarh', 'Panchagarh Sadar', 'Panchbibi', 'Panchlaish',
-             'Pangsha', 'Parbatipur', 'Paribagh', 'Parshuram', 'Patenga', 'Patgram', 'Patiya', 'Patuakhali',
-             'Patuakhali Sadar', 'Phulbari', 'Phulpur', 'Pirerbag', 'Pirganj', 'Pirojpur', 'Puran Bogra',
-             'Purana Paltan', 'Purbachal', 'Puthia', 'Rahanpur', 'Railway Colony', 'Raipur', 'Raipura', 'Rajasthali',
-             'Rajbari', 'Rajbari Sadar', 'Rajoir', 'Rajshahi City', 'Ramganj', 'Ramgarh', 'Ramgati', 'Ramna', 'Rampura',
-             'Rangamati', 'Rangpur City', 'Rangunia', 'Ranisankail', 'Raozan', 'Riaj Uddin Bazar', 'Rupganj',
-             'Rupnagar', 'Rupsha', 'Sabujbag', 'Sadar', 'Sagorika Bscic Industrial Area', 'Saidpur', 'Sakhipur',
-             'Sandwip', 'Santahar', 'Santhia', 'Sarishabari', 'Satkania', 'Satkhira', 'Satkhira Sadar', 'Savar',
-             'Senbagh', 'Senpara Porbota', 'Setabganj', 'Shah Ali', 'Shahbag ', 'Shahbagh', 'Shahjadpur',
-             'Shahjahanpur', 'Shahporan', 'Shahrasti', 'Shailkupa', 'Shaistaganj', 'Shajahanpur', 'Shantinagar',
-             'Shariatpur', 'Shariatpur Sadar', 'Shegunbagicha', 'Sher E Bangla Nagar ', 'Sherpur', 'Sherpur Sadar',
-             'Shewrapara', 'Shibchar', 'Shibganj', 'Shibpur', 'Shiddheswari', 'Shiddhirganj', 'Sholokbahar', 'Shyamoli',
-             'Shyampur', 'Shyampur ', 'Siddeshwari', 'Singair', 'Singiar', 'Singra', 'Sirajganj', 'Sirajganj Sadar',
-             'Sitakunda', 'Sonadanga', 'Sonagazi', 'Sonaimuri', 'Sonargaon', 'Sonatala', 'South Banasree', 'Sreebardi',
-             'Sreemangal', 'Sreepur', 'Sujanagar', 'Sunamganj', 'Sunamganj Sadar', 'Sutrapur', 'Swarupkati',
+             'Lohagara', 'Madani Avenue', 'Madarganj', 'Madaripur', 'Madaripur Sadar', 'Madhabadi', 'Madhabdi',
+             'Madhabpur', 'Madhupur', 'Maghbazar', 'Magura', 'Magura Sadar', 'Maheshkhali', 'Maheshpur', 'Malibag',
+             'Malibagh', 'Manikganj Sadar', 'Maniknagar', 'Manirampur', 'Matiranga', 'Matlab', 'Matuail',
+             'Maulvi Bazar', 'Mehendiganj', 'Meherpur', 'Melandaha', 'Mirkadim', 'Mirpur', 'Mirpur 1', 'Mirpur 10',
+             'Mirpur 11', 'Mirpur 12', 'Mirpur 13', 'Mirpur 14', 'Mirpur 2', 'Mirpur 6', 'Mirpur Dohs', 'MirpurDOHS',
+             'Mirsharai', 'Mirzapur', 'Mithapukur', 'Modhubag', 'Mogbazar', 'Moghbazar', 'Mohakhali', 'Mohakhali Dohs',
+             'MohakhaliDOHS', 'Mohammadpur', 'Mohammadpur ', 'Mohanganj', 'Mongla', 'Monipur10 No. North Kattali Ward',
+             'Morrelganj', 'Motijheel', 'Moulvibazar Sadar', 'Mugda', 'Mugda Para', 'Mugdapara', 'Muksudpur',
+             'Muktagacha', 'Muktagachha', 'Muladi', 'Mundumala', 'Munshiganj', 'Munshiganj Sadar', 'Muradpur',
+             'Mymensingh City', 'Nabiganj', 'Nabinagar', 'Nadda', 'Nageshwari', 'Nakhalpara', 'Nakla', 'Nalchiti',
+             'Nalitabari', 'Nandail', 'Nandipara', 'Nangalkot', 'Naogaon Sadar', 'Naohata', 'Narail', 'Narayanganj',
+             'Narayangonj Sadar', 'Naria', 'Narinda', 'Narsingdi Sadar', 'Nasirbad', 'Natore', 'Natore Sadar',
+             'Naya Paltan', 'NayaPaltan', 'Nazipur', 'Netrakona', 'Netrokona Sadar', 'New Eskaton', 'New Market',
+             'Niketan', 'Niketon', 'Nikunja', 'Nikunjo', 'Nilphamari', 'Nilphamari Sadar', 'Noakhali', 'Noakhali Sadar',
+             'Noapara', 'North  Nandipara', 'North Shahjahanpur', 'Pabna Sadar', 'Pahartali', 'Pakundia', 'Pallabi',
+             'Pallabi ', 'Paltan', 'Panchagarh', 'Panchagarh Sadar', 'Panchbibi', 'Panchlaish', 'Pangsha', 'Panthapath',
+             'Parbatipur', 'Paribagh', 'Parshuram', 'Patenga', 'Patgram', 'Patiya', 'Patuakhali', 'Patuakhali Sadar',
+             'Phulbari', 'Phulpur', 'Pirerbag', 'Pirganj', 'Pirojpur', 'Progoti Sarani', 'Pubail', 'Puran Bogra',
+             'Purana Paltan', 'Purbachal', 'Purbachal New Town', 'Puthia', 'Rahanpur', 'Railway Colony', 'Raipur',
+             'Raipura', 'Rajabazar', 'Rajasthali', 'Rajbari', 'Rajbari Sadar', 'Rajoir', 'Rajshahi City', 'Ramganj',
+             'Ramgarh', 'Ramgati', 'Ramna', 'Rampura', 'Rangamati', 'Rangpur City', 'Rangpur City Corporation',
+             'Rangunia', 'Ranisankail', 'Raozan', 'Rayer Bazar', 'Riaj Uddin Bazar', 'Rupganj', 'Rupnagar', 'Rupsha',
+             'Sabujbag', 'Sadar', 'Sagorika Bscic Industrial Area', 'Saidpur', 'Sakhipur', 'Sandwip', 'Santahar',
+             'Santhia', 'Sarishabari', 'Satkania', 'Satkhira', 'Satkhira Sadar', 'Savar', 'Segun Bagicha', 'Senbagh',
+             'Senpara Porbota', 'Setabganj', 'Shagun Bagicha', 'Shah Ali', 'Shahbag ', 'Shahbagh', 'Shahjadpur',
+             'Shahjahanpur', 'Shahporan', 'Shahrasti', 'Shailkupa', 'Shaistaganj', 'Shajahanpur', 'Shanti Nagar',
+             'Shantinagar', 'Shariatpur', 'Shariatpur Sadar', 'Shegunbagicha', 'Sher E Bangla Nagar ', 'Sherpur',
+             'Sherpur Sadar', 'Shewrapara', 'Shibchar', 'Shibganj', 'Shibpur', 'Shiddeshwari', 'Shiddheswari',
+             'Shiddhirganj', 'Shitakunda', 'Sholokbahar', 'Shukrabad', 'Shyamoli', 'Shyampur', 'Shyampur ',
+             'Siddeshwari', 'Singair', 'Singiar', 'Singra', 'Sirajganj', 'Sirajganj Sadar', 'Sitakunda', 'Sokipur',
+             'Sonadanga', 'Sonagazi', 'Sonaimuri', 'Sonargaon', 'Sonatala', 'South Banasree', 'Sreebardi', 'Sreemangal',
+             'Sreepur', 'Subid Bazar', 'Sujanagar', 'Sunamganj', 'Sunamganj Sadar', 'Sutrapur', 'Swarupkati',
              'Sylhet City', 'Taltali', 'Taltola', 'Tangail Sadar', 'Tanore', 'Tarabo', 'Tarakanda', 'Tejgaon',
              'Tejgaon I/A', 'Teknaf', 'Tetulia', 'Thakurgaon', 'Thakurgaon Sadar', 'Tikatuli', 'Tongi', 'Trishal',
-             'Turag', 'Ulipur', 'Ullahpara', 'Ullapara', 'Uttar Khan', 'Uttar Lalkhan', 'Uttara', 'Uttara East',
-             'Uttara West', 'Uttarkhan', 'Vatara', 'Vatara ', 'Wari', 'West Dhanmondi', 'West Khulshi', 'West Rampura',
-             'Zafrabad', 'Zindabazar', 'Madani Avenue', 'Rayer Bazar', 'Panthapath', 'New Eskaton', 'Kallayanpur',
-             'MohakhaliDOHS', 'MirpurDOHS', 'Choukbazar', 'Zigatola', 'Basundhara', 'DakhinKhan', 'BananiDOHS',
-             'ElephantRoad', 'Kalyanpur', 'NayaPaltan', 'Rajabazar', 'Mogbazar', 'Shagun Bagicha', 'Shiddeshwari',
-             'Gabtoli', 'Shanti Nagar', 'Bangla Motor', 'Gulshan-1', 'Gulshan-2', 'Baridhara Diplomatic Zone',
-             'Bashundhara R /A', 'Arapur', 'Golmari', 'Bashundhara Residential Area', 'Joydebpur', 'Purbachal New Town',
-             'Pubail', 'Gulshan One', 'Adabar', 'Dhaka Cantonment', 'Rangpur City Corporation', 'Shitakunda', 'Valuka',
-             'Baily Road', 'Faridpur City', 'Boshila', 'Madhabadi', 'Uposhohor', 'Baipayl', 'Faujdarhat', 'Naya Paltan',
-             'Kona Bari', 'Zirabo', 'Shukrabad', 'Elephant Rd', 'Segun Bagicha', 'Subid Bazar', 'Sokipur', 'Kalurghat',
-             'Kemal Ataturk Avenue', 'Progoti Sarani']
+             'Turag', 'Ulipur', 'Ullahpara', 'Ullapara', 'Uposhohor', 'Uttar Khan', 'Uttar Lalkhan', 'Uttara',
+             'Uttara East', 'Uttara West', 'Uttarkhan', 'Valuka', 'Vatara', 'Vatara ', 'Wari', 'West Dhanmondi',
+             'West Khulshi', 'West Rampura', 'Zafrabad', 'Zigatola', 'Zindabazar', 'Zirabo', 'Nikunja 1']
 
     try:
 
