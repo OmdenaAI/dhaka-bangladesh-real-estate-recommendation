@@ -177,7 +177,9 @@ def get_area_name(name):
              'Tejgaon I/A', 'Teknaf', 'Tetulia', 'Thakurgaon', 'Thakurgaon Sadar', 'Tikatuli', 'Tongi', 'Trishal',
              'Turag', 'Ulipur', 'Ullahpara', 'Ullapara', 'Uposhohor', 'Uttar Khan', 'Uttar Lalkhan', 'Uttara',
              'Uttara East', 'Uttara West', 'Uttarkhan', 'Valuka', 'Vatara', 'Vatara ', 'Wari', 'West Dhanmondi',
-             'West Khulshi', 'West Rampura', 'Zafrabad', 'Zigatola', 'Zindabazar', 'Zirabo', 'Nikunja 1']
+             'West Khulshi', 'West Rampura', 'Zafrabad', 'Zigatola', 'Zindabazar', 'Zirabo', 'Nikunja 1', 'Dhaka south',
+             'Mirpur-1', 'Khilgoan', 'Kazi Para', 'Dakkhin Khan', 'Agargoan', 'Mirpur-2', 'Mirpur-11', 'Madartek',
+             'Mirpur-10', 'Keranigonj', 'Kathal Bagan', 'Mirpur-8', 'Mirpur-12', 'Mirpur-6']
 
     try:
 
