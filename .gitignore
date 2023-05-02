@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+src/data/.DS_Store
+
+src/data/CLeaned_Data/.DS_Store
+
+src/data/Raw_data/.DS_Store
+
+src/tasks/task-2-data-preprocessing/.DS_Store
+
+src/data/Raw_data/.DS_Store
+
+src/data/Raw_data/Property Choice website/pchoicebd.com.ipynb
+
+src/data/Raw_data/Property Choice website/pchoicebd.com.ipynb
+
+src/data/Raw_data/Property Choice website/pchoicebd.com.ipynb
+
+src/data/Raw_data/.DS_Store
