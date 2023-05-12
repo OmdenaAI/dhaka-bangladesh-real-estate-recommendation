@@ -4,29 +4,17 @@
  get_detailed_address() :
     - Take a full comma separated address as input
     - Split the address into City, Area, Address
-<<<<<<< HEAD
-    - Return a dictionary containing city, locality (a.k.a. area), address as keys
-=======
     - Return a dictionary containing division, city, zone, locality (a.k.a. area), address as keys
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
 
 This function splits input address according to the commas, then it checks each separated string with the values in
 the arrays which we pre-defined in the function. It will return one area name under the 'locality' key and one city name
 under the 'city' key, if it could match them with the pre-defined areas and cities in the function , the rest of the
-<<<<<<< HEAD
-string or address will be under the 'address' key.
-
-For example,
-    Input --> "Block M, South Banasree Project, Banasree, Dhaka"
-    Output --> {"city": "Dhaka", "locality": "Banasree", "address": "Block M, South Banasree Project"}
-=======
 string or address will be under the 'address' key. Then, according to the 'locality' it finds the 'zone' for that area,
 as well as, it finds 'division' according to the 'city'.
 
 For example,
     Input --> "Block M, South Banasree Project, Banasree, Dhaka"
     Output --> {"divison": "Dhaka", "city": "Dhaka", "zone": "Khilgaon" "locality": "Banasree", "address": "Block M, South Banasree Project"}
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
 
 Note: The input has to be comma separated in order to get meaningful output like the example above. Otherwise, it
 won't recognize the address properly.
@@ -46,11 +34,7 @@ def get_detailed_address(address):
         address = address.title()
 
         # defining output dictionary
-<<<<<<< HEAD
-        address_dict = {"city": "", "locality": "", "address": ""}
-=======
         address_dict = {"division": "", "city": "", "zone": "", "locality": "", "address": ""}
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
 
         # splitting the input according to commas
         splitted_address = address.split(',')
@@ -75,25 +59,18 @@ def get_detailed_address(address):
         # joining the rest of the input and assigning it under the "address" key.
         address_dict["address"] = ','.join(splitted_address)
 
-<<<<<<< HEAD
-=======
         # called get_division() and passing "city" in order to find 'division'
         address_dict["division"] = get_division(address_dict["city"])
         # called get_zone() and passing "locality" in order to find 'zone'
         address_dict["zone"] = get_zone(address_dict["locality"])
 
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
         # returning the output dictionary
         return address_dict
 
     except:
 
         # if any exception occurs, it assigns the whole input under the "address" key and return the dictionary
-<<<<<<< HEAD
-        return {"city": "", "locality": "", "address": address}
-=======
         return {"division": "", "city": "", "zone": "", "locality": "", "address": address}
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
 
 
 def get_city_name(name):
@@ -124,13 +101,9 @@ def get_city_name(name):
 
 def get_area_name(name):
     # a list containing different areas of Bangladesh
-<<<<<<< HEAD
-    areas = ['11 No. South Kattali Ward', '15 No. Bagmoniram Ward', '16 No. Chawk Bazaar Ward',
-=======
     areas = ['33 No. Firingee Bazaar Ward', '22 No. Enayet Bazaar Ward', '15 No. Bagmoniram Ward',
              '9 No. North Pahartali Ward', '11 No. South Kattali Ward', '15 No. Bagmoniram Ward',
              '16 No. Chawk Bazaar Ward',
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
              '22 No. Enayet Bazaar Ward', '29 No. West Madarbari Ward', '30 No. East Madarbari Ward',
              '31 No. Alkoron Ward', '32 No. Andarkilla Ward', '33 No. Firingee Bazaar Ward', '36 Goshail Danga Ward',
              '4 No Chandgaon Ward', '7 No. West Sholoshohor Ward', '9 No. North Pahartali Ward', 'Adabar', 'Adabor',
@@ -226,8 +199,6 @@ def get_area_name(name):
 
         # if it doesn't find any match with the input, it returns false.
         return False
-<<<<<<< HEAD
-=======
 
 
 """
@@ -470,4 +441,3 @@ def get_zone(locality_name):
 
     # if it finds none, then it returns an emtpy string.
     return ""
->>>>>>> fd4514162255cff2acd47d883699aacb1499a8af
