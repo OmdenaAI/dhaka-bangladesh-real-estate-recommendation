@@ -128,5 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# banish:.DS_Store files
+# banish: .DS_Store files
+# These Mac OS specific files keep appearing in the changes
+# and need to be ignored!
 .DS_Store
