@@ -15,7 +15,7 @@ building_nature = st.selectbox(
     ('Residential', 'Commercial')
 )
 
-area = st.number_input('Area in Sq. ft.', min_value = 1100)
+area = st.number_input('Area in Sq. ft.', min_value = 10)
 
 num_bath_rooms = st.number_input('Number of bathrooms')
 
