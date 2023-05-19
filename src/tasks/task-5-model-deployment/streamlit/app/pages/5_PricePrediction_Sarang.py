@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import subprocess
 
-parent_folder = parent_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+parent_folder = parent_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'artifactory'))
 sys.path.append(parent_folder)
 
 import model_sarang

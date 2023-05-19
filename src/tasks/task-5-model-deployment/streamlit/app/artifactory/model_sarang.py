@@ -19,7 +19,7 @@ warnings.filterwarnings('ignore', category=UserWarning)
 warnings.filterwarnings('ignore', category=FutureWarning)
 
 # Read df
-df = pd.read_csv('prepared_df_sarang.csv', index_col='id')
+df = pd.read_csv('app/artifactory/prepared_df_sarang.csv', index_col='id')
 amenities = df.filter(like='amenity')
 df.drop(columns=amenities.columns, inplace=True)
 
@@ -130,7 +130,7 @@ preprocessor = ColumnTransformer(transformers=[
 """preprocessor = preprocessor.fit(train_X, train_y)
 joblib.dump(preprocessor, 'preprocessor_sarang.pkl')"""
 
-preprocessor = joblib.load('preprocessor_sarang.pkl')
+preprocessor = joblib.load('app/artifactory/preprocessor_sarang.pkl')
 prepared_train_X = preprocessor.transform(train_X)
 
 # Model preparation and evaluation
@@ -140,7 +140,7 @@ rf_reg.fit(prepared_train_X, train_y)
 joblib.dump(rf_reg, 'RandomForrest_sarang.pkl')"""
 
 # Load the trained model
-model = joblib.load('RandomForrest_sarang.pkl')
+model = joblib.load('app/artifactory/RandomForrest_sarang.pkl')
 
 
 def prepare_input_for_model(X):
