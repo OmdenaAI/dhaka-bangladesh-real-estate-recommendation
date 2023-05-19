@@ -17,9 +17,9 @@ building_nature = st.selectbox(
 
 area = st.number_input('Area in Sq. ft.', min_value = 10)
 
-num_bath_rooms = st.number_input('Number of bathrooms')
+num_bath_rooms = st.number_input('Number of bathrooms',value=0, step=1, format="%d")
 
-num_bed_rooms = st.number_input('Number of bedrooms')
+num_bed_rooms = st.number_input('Number of bedrooms',value=0, step=1, format="%d")
 
 divison = st.selectbox(
     'Select division',
@@ -41,7 +41,7 @@ zone = st.selectbox(
 
 purpose = st.selectbox(
     'Sale or rent?',
-    ('rent','sale'))
+    ('Rent','Sale'))
 
 building_type = st.selectbox(
     'Select type of property',

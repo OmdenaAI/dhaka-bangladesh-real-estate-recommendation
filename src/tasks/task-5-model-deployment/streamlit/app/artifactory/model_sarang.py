@@ -160,7 +160,7 @@ def make_prediction(input):
 
 
 # Make a prediction
-predicted_price = make_prediction({
+"""predicted_price = make_prediction({
     'division': 'Dhaka',
     'building_type': 'Appartment',
     'building_nature': 'Residential',
@@ -171,4 +171,4 @@ predicted_price = make_prediction({
     'area': 1100
 })
 
-print(f"Predicted Price: {predicted_price}")
+print(f"Predicted Price: {predicted_price}")"""
