@@ -127,17 +127,17 @@ preprocessor = ColumnTransformer(transformers=[
     ('small_cat', small_cat_transformer, small_cat),
     ('scaling', scaler_transformer, number_cols)
 ])
-"""preprocessor = preprocessor.fit(train_X, train_y)
-joblib.dump(preprocessor, 'preprocessor_sarang.pkl')"""
+preprocessor = preprocessor.fit(train_X, train_y)
+joblib.dump(preprocessor, 'preprocessor_sarang.pkl')
 
 preprocessor = joblib.load('preprocessor_sarang.pkl')
 prepared_train_X = preprocessor.transform(train_X)
 
 # Model preparation and evaluation
 
-"""rf_reg = RandomForestRegressor(max_features=8, n_estimators=15, random_state=42)
+rf_reg = RandomForestRegressor(max_features=8, n_estimators=15, random_state=42)
 rf_reg.fit(prepared_train_X, train_y)
-joblib.dump(rf_reg, 'RandomForrest_sarang.pkl')"""
+joblib.dump(rf_reg, 'RandomForrest_sarang.pkl')
 
 # Load the trained model
 model = joblib.load('RandomForrest_sarang.pkl')
