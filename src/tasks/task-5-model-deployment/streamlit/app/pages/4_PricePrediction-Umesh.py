@@ -24,18 +24,20 @@ purpose = st.selectbox(
     ('sale', 'rent'))
 # st.write('You selected:', purpose)
 
-f = open('input.csv', 'w') #write mode 
+f = open('./app/artifactory/input.csv', 'w') #write mode 
 writer = csv.writer(f, delimiter=',', quotechar='"')
 writer.writerow(["area","num_bath_rooms","num_bed_rooms","zone","purpose"])
 writer.writerow([area, num_bath_rooms, num_bed_rooms, zone, purpose])
 f.close()
 
 # Sent the input to the R function
-process = subprocess.Popen(["Rscript", "predict_property_price.R"], 
+process = subprocess.Popen(["Rscript", "./app/artifactory/predict_property_price.R"], 
                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
 # Read, format and print the prediction
 result = process.communicate()
+# st.write(result)
+
 predicted_price = list(result)[0].split(' ')[2]
 st.write(f'Price prediction: {predicted_price} BDT for the {purpose} of {area} Sq. ft apartment in {zone}')
 
