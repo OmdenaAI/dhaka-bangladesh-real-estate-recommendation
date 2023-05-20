@@ -10,16 +10,31 @@ import model_sarang
 
 st.subheader("Predict price of any Property")
 
+building_type = st.selectbox(
+    'What are you looking for',
+    ('Apartment', 'Plot', 'Full Residential Building', 'Shop', 'Office', 'Floor')
+)
+
+if building_type == 'Full Residential Building':
+    building_type = 'Building'
+
+if building_type == 'Plot':
+    building_type = 'Residential Plot'
+
 building_nature = st.selectbox(
-    'Select the nature of building (Residential/Commercial)',
+    'Residential or Commercial',
     ('Residential', 'Commercial')
 )
+
+purpose = st.selectbox(
+    'Sale or rent?',
+    ('Rent','Sale'))
 
 area = st.number_input('Area in Sq. ft.', min_value = 10)
 
 num_bath_rooms = st.number_input('Number of bathrooms',value=0, step=1, format="%d")
 
-num_bed_rooms = st.number_input('Number of bedrooms',value=0, step=1, format="%d")
+num_bed_rooms = st.number_input('Number of Rooms/Bedrooms',value=0, step=1, format="%d")
 
 divison = st.selectbox(
     'Select division',
@@ -39,14 +54,6 @@ zone = st.selectbox(
        'Sub-district of Narayanganj', 'Sub-district of Dhaka', 'Golapbag',
        'Sub-district of Sirajganj'))
 
-purpose = st.selectbox(
-    'Sale or rent?',
-    ('Rent','Sale'))
-
-building_type = st.selectbox(
-    'Select type of property',
-    ('Apartment', 'Residential Plot', 'Building', 'Shop', 'Office', 'Floor')
-)
 
 
 prediction = model_sarang.make_prediction({
@@ -60,4 +67,6 @@ prediction = model_sarang.make_prediction({
     'area': area
 })
 
-st.write(f"Predicted price is  {prediction}")
+st.write(f"Predicted price: {prediction} BDT")
+
+"note: For relavent residential properties, '0' Rooms/Bedrooms may not be considered when predicting price"
