@@ -15,8 +15,23 @@ num_bed_rooms = st.number_input('Number of bedrooms')
 
 zone = st.selectbox(
     'Which zone would you prefer?',
-    ('Mirpur', 'Chattogram City', 'Bashundhara R/A', 'Khilgaon', 'Mohammadpur', 'Uttara', 
-     'Badda', 'Dakshin Khan', 'Sub-district of Chattogram', 'Dhaka Cantonment'))
+    ('Badda', 'Banani', 'Bashundhara R/A', 'Chattogram City',
+       'Dakshin Khan', 'Demra', 'Dhaka Cantonment', 'Dhanmondi',
+       'Gulshan', 'Hatirpool', 'Hazaribagh', 'Jatrabari', 'Keraniganj',
+       'Khilgaon', 'Khilkhet', 'Kurmitola', 'Mirpur', 'Mohakhali',
+       'Mohammadpur', 'Motijheel', 'Mugdapara', 'New Market', 'Old Dhaka',
+       'Ramna', 'Savar', 'Shabujbag', 'Sher-E-Bangla Nagar', 'Shyamoli',
+       'Sub-district of Bandarban', 'Sub-district of Barguna',
+       'Sub-district of Bogura', 'Sub-district of Chandpur',
+       'Sub-district of Chattogram', 'Sub-district of Cumilla',
+       'Sub-district of Dhaka', 'Sub-district of Gazipur',
+       'Sub-district of Habiganj', 'Sub-district of Jessore',
+       'Sub-district of Khulna', 'Sub-district of Kishoreganj',
+       'Sub-district of Manikganj', 'Sub-district of Narayanganj',
+       'Sub-district of Narsingdi', 'Sub-district of Rajshahi',
+       'Sub-district of Rangpur', 'Sub-district of Satkhira',
+       'Sub-district of Sherpur', 'Sub-district of Sirajganj', 'Sutrapur',
+       'Sylhet City', 'Tejgaon', 'Turag', 'Uttara'))
 # st.write('You selected:', zone)
 
 purpose = st.selectbox(
