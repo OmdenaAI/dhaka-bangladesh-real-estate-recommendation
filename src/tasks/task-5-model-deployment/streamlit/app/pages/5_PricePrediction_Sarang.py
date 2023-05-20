@@ -2,11 +2,10 @@ import sys
 import os
 import streamlit as st
 import subprocess
+import imp
 
-parent_folder = parent_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'artifactory'))
-sys.path.append(parent_folder)
-
-import model_sarang
+model_path = 'app/artifactory/model_sarang.py'
+model = imp.load_source('model_sarang', model_path)
 
 st.subheader("Predict price of any Property")
 
@@ -56,7 +55,7 @@ zone = st.selectbox(
 
 
 
-prediction = model_sarang.make_prediction({
+prediction = model.make_prediction({
     'division': divison,
     'building_type': building_type,
     'building_nature': building_nature,
