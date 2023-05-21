@@ -66,6 +66,15 @@ prediction = model.make_prediction({
     'area': area
 })
 
-st.write(f"Predicted price: {prediction} BDT")
+def convert_to_bdt_price(value):
+    formatted_value = "{:,.2f}".format(value) 
+    bdt_price = "৳" + formatted_value
+    
+    return bdt_price
+
+bdt_price = convert_to_bdt_price(prediction)
+print(bdt_price)
+
+st.write(f"Predicted price: {bdt_price}")
 
 "note: For relavent residential properties, '0' Rooms/Bedrooms may not be considered when predicting price"
