@@ -22,9 +22,13 @@ docker run -d --name appcontainer -p 8501:8501 appimage
 # AWS Deployment Steps
 
    sudo yum update -y
+
    sudo yum install -y docker
+
    sudo service docker start
+
    sudo usermod -a -G docker ec2-user
+
    exit    (logout)
 
    Log back in to ec2 instance
@@ -60,4 +64,23 @@ docker run -d --name appcontainer -p 8501:8501 appimage
 
    docker restart appcontainer
 
+## How to rebuild new image
+   docker ps -a 
+   
+   docker container stop "container name"
 
+   check the status
+   
+   docker ps -a
+
+   docker container rm "container name"
+
+   docker image ls
+   
+   docker image rm "image name"
+
+   docker image rm "python image"
+
+   docker build -t appimage .
+
+   docker run -d --name appcontainer -p 8501:8501 appimage

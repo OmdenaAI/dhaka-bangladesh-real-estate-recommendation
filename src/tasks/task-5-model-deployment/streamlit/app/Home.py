@@ -6,7 +6,7 @@ st.set_page_config(
 )
 
 st.title("Home Page")
-st.image("Propertyai.jpeg", caption='', use_column_width=True)
+st.image("app/artifactory/Propertyai.jpeg", caption='', use_column_width=True)
 
 st.header("The Problem")
 st.write("""
