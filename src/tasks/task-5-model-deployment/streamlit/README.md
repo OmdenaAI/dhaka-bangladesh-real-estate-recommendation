@@ -18,3 +18,46 @@ docker build -t appimage .
 
 docker run -d --name appcontainer -p 8501:8501 appimage
 
+
+AWS Deployment Steps
+
+   sudo yum update -y
+   sudo yum install -y docker
+   sudo service docker start
+   sudo usermod -a -G docker ec2-user
+   exit    (logout)
+
+   Log back in to ec2 instance
+
+   docker info
+   
+   copy the streamlit folder
+   
+   cd streamlit (navigate to streamlit folder)
+   
+   sudo systemctl start docker
+
+   docker build -t appimage .
+
+   docker run -d --name appcontainer -p 8501:8501 appimage
+
+
+How to check the app is running or not
+
+   ps -ef | grep python
+
+
+How to check docker container status
+
+   docker ps -a
+
+
+How to restart the docker
+
+   sudo systemctl restart docker
+
+How to restart the docker container
+
+   docker restart appcontainer
+
+
