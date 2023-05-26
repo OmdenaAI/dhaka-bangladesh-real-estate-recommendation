@@ -42,6 +42,10 @@ We also found that:
 * there are amenities with little effect on the prices: `maintenance_or_cleaning_amenity_count`, `service_staff_amenity_count`
 And there is a skew in our data toward "Apartment" `building_type`
 
+## Folder structure
+The Collaborators explored the questions in teams of 03 members. Each team has its analysis in its folder:[Group 02](./Group-2), [Group 03](./Group 3), [Group 04](./Group 4),[Group 05](./Group 5).
+Their works were summarized in [this global report](./EDA global report - real estate market in Bangladesh - final version.ipynb)
+
 
 ## Key Insights for Presentation
 
