@@ -1,0 +1,6 @@
+streamlit
+sentence-transformers
+matplotlib
+scikit-learn
+category_encoders
+joblib
